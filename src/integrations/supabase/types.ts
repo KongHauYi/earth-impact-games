@@ -14,13 +14,100 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      element_ratings: {
+        Row: {
+          created_at: string | null
+          gas_name: string
+          id: string
+          stars: number
+        }
+        Insert: {
+          created_at?: string | null
+          gas_name: string
+          id?: string
+          stars: number
+        }
+        Update: {
+          created_at?: string | null
+          gas_name?: string
+          id?: string
+          stars?: number
+        }
+        Relationships: []
+      }
+      element_reviews: {
+        Row: {
+          created_at: string | null
+          gas_name: string
+          id: string
+          review_text: string
+          reviewer_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          gas_name: string
+          id?: string
+          review_text: string
+          reviewer_id: string
+        }
+        Update: {
+          created_at?: string | null
+          gas_name?: string
+          id?: string
+          review_text?: string
+          reviewer_id?: string
+        }
+        Relationships: []
+      }
+      trash_counter: {
+        Row: {
+          count: number
+          goal: number
+          id: number
+        }
+        Insert: {
+          count?: number
+          goal?: number
+          id?: number
+        }
+        Update: {
+          count?: number
+          goal?: number
+          id?: number
+        }
+        Relationships: []
+      }
+      tree_counter: {
+        Row: {
+          count: number
+          id: number
+          winner: string | null
+        }
+        Insert: {
+          count?: number
+          id?: number
+          winner?: string | null
+        }
+        Update: {
+          count?: number
+          id?: number
+          winner?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      change_trees: {
+        Args: { delta: number }
+        Returns: {
+          new_count: number
+          winner: string
+        }[]
+      }
+      increment_trash: { Args: never; Returns: number }
     }
     Enums: {
       [_ in never]: never
